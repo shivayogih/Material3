@@ -5,13 +5,17 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Edit
+import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.FavoriteBorder
+import androidx.compose.material.icons.filled.Phone
+import androidx.compose.material.icons.filled.Share
 import androidx.compose.ui.Alignment
 import androidx.compose.material3.*
 import androidx.compose.ui.Modifier
@@ -30,60 +34,52 @@ class MainActivity : ComponentActivity() {
             Material3Theme {
                 // A surface container using the 'background' color from the theme
                 Surface(
-                    modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background
+                    modifier = Modifier.fillMaxSize(),
+                    color = MaterialTheme.colorScheme.background
                 ) {
 
-                    val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior()
-                    // val scrollBehavior=TopAppBarDefaults.enterAlwaysScrollBehavior()
-                    //   val scrollBehavior=TopAppBarDefaults.exitUntilCollapsedScrollBehavior()
                     Scaffold(
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .nestedScroll(scrollBehavior.nestedScrollConnection),
-                        topBar = {
-                            TopAppBar(
-                                title = {
-                                    Text(text = "My Notes")
-
-                                },
-                                navigationIcon = {
-                                    IconButton(onClick = { /*TODO*/ }) {
-                                        Icon(
-                                            imageVector = Icons.Default.ArrowBack,
-                                            contentDescription = "Go Back"
-                                        )
-                                    }
-                                },
+                        modifier = Modifier.fillMaxSize(),
+                        bottomBar = {
+                            BottomAppBar(
                                 actions = {
                                     IconButton(onClick = { /*TODO*/ }) {
                                         Icon(
-                                            imageVector = Icons.Default.FavoriteBorder,
-                                            contentDescription = "Mark as favorite"
+                                            imageVector = Icons.Default.Share,
+                                            contentDescription = "Share content"
                                         )
+
                                     }
                                     IconButton(onClick = { /*TODO*/ }) {
                                         Icon(
-                                            imageVector = Icons.Default.Edit,
-                                            contentDescription = "Edit notes "
+                                            imageVector = Icons.Default.FavoriteBorder,
+                                            contentDescription = "Mark as Favorite"
                                         )
+
+                                    }
+                                    IconButton(onClick = { /*TODO*/ }) {
+                                        Icon(
+                                            imageVector = Icons.Default.Email,
+                                            contentDescription = "Email contact"
+                                        )
+
                                     }
                                 },
-                                scrollBehavior = scrollBehavior
+                                floatingActionButton = {
+                                    FloatingActionButton(onClick = { /*TODO*/ }) {
+                                        Icon(
+                                            imageVector = Icons.Default.Phone,
+                                            contentDescription = "Call contact"
+                                        )
+                                    }
+                                }
+
                             )
                         }
-                    ) { values ->
-                        LazyColumn(
-                            modifier = Modifier
-                                .fillMaxSize()
-                                .padding(values)
-                        ) {
-                            items(100) {
-                                Text(
-                                    text = "Item$it",
-                                    modifier = Modifier.padding(16.dp)
-                                )
-                            }
-                        }
+                    )
+                    { values ->
+
+
                     }
 
                 }
